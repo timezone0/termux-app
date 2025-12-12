@@ -33,7 +33,7 @@ public class TermuxBootstrap {
         Logger.logVerbose(LOG_TAG, "Set TERMUX_APP_PACKAGE_VARIANT to \"" + TERMUX_APP_PACKAGE_VARIANT + "\"");
 
         // Set packageManagerName to substring before first dash "-" in packageVariantName
-        int index = packageVariantName.indexOf('-');
+        int index = packageVariantName.indexOf('.');
         String packageManagerName = (index == -1) ? null : packageVariantName.substring(0, index);
         TERMUX_APP_PACKAGE_MANAGER = PackageManager.managerOf(packageManagerName);
         if (TERMUX_APP_PACKAGE_MANAGER == null) {
@@ -177,10 +177,10 @@ public class TermuxBootstrap {
     public enum PackageVariant {
 
         /** {@link PackageManager#APT} variant for Android 7+. */
-        APT_ANDROID_7("apt-android-7"),
+        APT_ANDROID_7("apt.android-7"),
 
         /** {@link PackageManager#APT} variant for Android 5+. */
-        APT_ANDROID_5("apt-android-5");
+        APT_ANDROID_5("apt.android-5");
 
         ///** {@link PackageManager#TAPM} variant for Android 7+. */
         //TAPM_ANDROID_7("tapm-android-7");
